@@ -2,7 +2,12 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { TouchableOpacity, View, Text, Dimensions, StyleSheet } from 'react-native';
 
-const { width } = Dimensions.get('window');
+let dimen = Dimensions.get('window');
+if (dimen.width === 0 && dimen.height === 0) {
+  dimen = Dimensions.get('screen');
+}
+
+const width = dimen.width;
 
 export default class ColorPalette extends Component {
   static getContrastColor(hex) {
